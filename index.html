@@ -1,0 +1,104 @@
+<html>
+<head>
+  <title>When Does Erinn Get Back?</title>
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
+  <style type="text/css" media="screen, print">
+    @font-face {
+      font-family: 'digi';
+      src: url('http://cssdeck.com/uploads/resources/fonts/digii/DS-DIGII.TTF');
+    }
+
+    div { font-family: "digi";
+          font-size: 2em;
+        }
+
+  </style>
+</head>
+<body>
+  <br>
+  <h1><center>When Does Erinn Get Back?</center></h1>
+  <hr width="40%">
+  <center><h2><font color="red">It's the FINAL COUNTDOWN!!!</font></h2></center>
+  <br>
+  <br>
+  <center><b>When does Erinn get back next?</b><div id="clock1">[clock1]</div></center>
+  <br>
+  <br>
+  <br>
+  <center><b>When does Erinn get back forever?</b><div id="clock2">[clock2]</div></center>
+</body>
+<script language="JavaScript">
+
+  StartCountDown("clock1","05/10/2015 12:00 PM -0600")
+  StartCountDown("clock2","05/10/2015 12:00 PM -0600")                                    
+  StartCountDown("clock3","04/15/2015 07:00 PM -0600")
+
+  /*
+    Author:   Robert Hashemian (http://www.hashemian.com/)
+    Modified by:  Munsifali Rashid (http://www.munit.co.uk/)
+    Modified by:  Tilesh Khatri
+  */
+
+  function StartCountDown(myDiv,myTargetDate)
+  {
+    var dthen = new Date(myTargetDate);
+    var dnow  = new Date();
+    ddiff   = new Date(dthen-dnow);
+    gsecs   = Math.floor(ddiff.valueOf()/1000);
+    CountBack(myDiv,gsecs);
+  }
+
+  function Calcage(secs, num1, num2)
+  {
+    s = ((Math.floor(secs/num1))%num2).toString();
+    if (s.length < 2)
+    {
+      s = "0" + s;
+    }
+    return (s);
+  }
+
+  function CountBack(myDiv, secs)
+  {
+    var DisplayStr;
+    var bday = new Date();
+    var DisplayFormat = "%%D%% Days&nbsp;&nbsp;&nbsp;&nbsp;%%H%% Hours&nbsp;&nbsp;&nbsp;&nbsp;%%M%% Minutes&nbsp;&nbsp;&nbsp;&nbsp;%%S%% Seconds";
+    DisplayStr = DisplayFormat.replace(/%%D%%/g,  Calcage(secs,86400,100000));
+
+    // Check to see if we're in the last day
+    if(Calcage(secs,86400,100000) == 0)
+    {
+      document.getElementById(myDiv).style.color="red";
+    }
+
+    DisplayStr = DisplayStr.replace(/%%H%%/g,   Calcage(secs,3600,24));
+    DisplayStr = DisplayStr.replace(/%%M%%/g,   Calcage(secs,60,60));
+	DisplayStr = DisplayStr.replace(/%%S%%/g,   Calcage(secs,1,60));
+
+    if(secs < 1)
+    {
+		document.getElementById(myDiv).style.color="red";
+        document.getElementById(myDiv).style.fontWeight="bold";
+		document.getElementById(myDiv).innerHTML = "SHE'S HERE!!";
+    }
+
+    // Check to see if there's still time left
+    if(secs > 0)
+    {
+      document.getElementById(myDiv).innerHTML = DisplayStr;
+      setTimeout("CountBack('" + myDiv + "'," + (secs-1) + ");", 990);
+    }
+  }
+
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-6611541-5', 'whendoeserinngetback.com');
+        ga('send', 'pageview');
+
+</script>
+</html>
